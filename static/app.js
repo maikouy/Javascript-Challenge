@@ -3,7 +3,7 @@
 // ***LEVEL 1: AUTO TABLE AND DATE SEARCH ***
 // -----------------------------------------------
 
-//Use D3 to select the table body
+// Use D3 to select the table body
 var tbody = d3.select("tbody");
 
 // Use D3 to select the table
@@ -13,10 +13,10 @@ var table = d3.select("table");
 table.attr("class", "table table-striped");
 
 
-//Use data from data.js
+// Use data from data.js and rename it
 var tableData = data;
 
-// Loop Through `data`, and use Object.entries 
+// Loop Through `tableData`, and use Object.entries 
     tableData.forEach((ufoSightings) => {
         var row = tbody.append("tr")
 
@@ -46,19 +46,19 @@ function runEnter() {
   // Get the value property of the input element
   var inputValue = inputElement.property("value")
 
-  console.log(inputValue);
-  console.log(tableData)
+  // console.log(inputValue);
+  // console.log(tableData)
 
   var filteredData = tableData.filter(ufoSightings => ufoSightings.datetime === inputValue);
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   // Clear the current table
   tbody.html("");
 
   // Make new row/table for the filteredData info
 filteredData.forEach(obj => {
-  // Append one table row per ufoSightings
+  // Append  table row 
   var row = tbody.append("tr");
   
   // Append one cell for the each cateorgory
@@ -69,5 +69,6 @@ filteredData.forEach(obj => {
   row.append("td").text(obj.shape);
   row.append("td").text(obj.durationMinutes);
   row.append("td").text(obj.comments);
+
 })
 };
