@@ -56,7 +56,7 @@ function runEnter() {
   // Clear the current table
   tbody.html("");
 
-  // Make new row 
+  // Make new row/table for the filteredData info
 filteredData.forEach(obj => {
   // Append one table row per ufoSightings
   var row = tbody.append("tr");
