@@ -17,7 +17,7 @@ table.attr("class", "table table-striped");
 var tableData = data;
 
 // Loop Through `data`, and use Object.entries 
-    data.forEach((ufoSightings) => {
+    tableData.forEach((ufoSightings) => {
         var row = tbody.append("tr")
 
         Object.entries(ufoSightings).forEach(([key, value]) => {
@@ -49,11 +49,25 @@ function runEnter() {
   console.log(inputValue);
   console.log(tableData)
 
-  var filteredData = tableData.filter(ufoSightings => ufoSightings.datetime === inputValue)
+  var filteredData = tableData.filter(ufoSightings => ufoSightings.datetime === inputValue);
 
   console.log(filteredData);
 
-  d3.select("h1>span").text(filteredData);
+  // Clear the current table
+  tbody.html("");
 
-// var filteredData = tableData.filter(ufoSightings => ufoSightings.datetime === inputDateValue)
+  // Make new row 
+filteredData.forEach(obj => {
+  // Append one table row per ufoSightings
+  var row = tbody.append("tr");
+  
+  // Append one cell for the each cateorgory
+  row.append("td").text(obj.datetime);
+  row.append("td").text(obj.city);
+  row.append("td").text(obj.state);
+  row.append("td").text(obj.country);
+  row.append("td").text(obj.shape);
+  row.append("td").text(obj.durationMinutes);
+  row.append("td").text(obj.comments);
+})
 };
